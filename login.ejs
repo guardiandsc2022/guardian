@@ -1,0 +1,71 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <link
+    rel="icon"
+    href="/guardian_logo_small.png"
+    type="image/x-icon"
+  />
+  <title>Guardian | Login</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<img
+  class="logo"
+  src = "/guardian_logo.png"
+  alt="logo drawings"
+/>
+
+<div class="box box2">
+  <div class="info">
+    <h1>Login</h1>
+    <form id="form" action="/login" method="POST">
+      <span class="message"><% if (messages.error) { %> <%= messages.error %> <% } %></span>
+      <div>
+        <div class="firstPlace">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+      </div>
+      <div>
+        <div class="secondPlace">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+
+    <div
+      class="g-recaptcha"
+      data-sitekey="6LfW2DMfAAAAAF2jk0ILzK_7beiaFgR_dyHBVMm8"
+    ></div>
+    <p class="createAccount">
+      Don't Have an Account? Click
+      <a href="/register" class="here">Here</a>
+      to Register.
+    </p>
+  </div>
+</div>
+
+<!-- <script>
+  document.getElementById('form').addEventListener('submit', submitForm);
+  function submitForm(e) {
+    e.preventDefault();
+    const email = document.querySelector('#email');
+    const password = document.querySelector('#passwork');
+    const captcha = document.querySelector('#g-recaptcha-response');
+
+    fetch('/login', {
+      method:'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({email: email, captcha: captcha})
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    });
+  }
+</script> -->
